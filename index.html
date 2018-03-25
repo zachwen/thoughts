@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div id="content" class="content">
+    <h3>Timeline</h3>
+    <ul>       
+        {% for post in site.posts limit:5  %}
+        {% unless post.draft %}
+
+        {% if post.menutitle %}
+        {% assign title = post.menutitle %}
+        {% else %}
+        {% assign title = post.title %}
+        {% endif %}
+        <figure class="large">
+            <a href="{{ post.url | absolute_url }}"><img class="fit" src="{{ post.cover | absolute_url }}"/></a>
+            <figcaption>
+                <div>
+                    <font color="{{ site.data.blog_data.post_catalog[post.category] }}">[{{ post.category }}] </font>
+                    <a href="{{ post.url | absolute_url }}">{{title}}</a>
+                </div>
+                <time class="fit date" itemprop="datePublished" datetime="{{post.date | date: "%Y-%m-%d"}}">{{post.date | date: "%B %e, %Y"}}</time>
+            </figcaption>
+        </figure>
+        {% endunless %}
+        {% endfor %}
+    </ul>
+
+</div>
