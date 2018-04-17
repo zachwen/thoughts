@@ -5,7 +5,7 @@ layout: default
 <div id="content" class="content">
     <h3>Timeline</h3>
     <ul>       
-        {% for post in site.posts limit:5  %}
+        {% for post in site.posts limit:32  %}
         {% unless post.draft %}
 
         {% if post.menutitle %}
